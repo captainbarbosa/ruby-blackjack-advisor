@@ -1,5 +1,6 @@
 #TODO: Fix case where user has a pair of aces
 
+# Method for getting a card value within accepted range
 def get_card
 
     input = gets.upcase.chomp
@@ -14,7 +15,7 @@ def get_card
         input.to_i > 1 && input.to_i < 10
         return input
     else
-        puts "Please enter a valid card"
+        puts "Please enter a valid card:"
         input = get_card
     end
 end
@@ -22,12 +23,7 @@ end
 
 #-----------------
 
-# Blackjack Strategy:
-#     H -- Hit
-#     S -- Stand
-#     P -- Split
-#    Dh -- Double if possible, otherwise hit
-#    Ds -- Double if possible, otherwise stand
+# Blackjack strategy data structures
 
 hard_hand = {
     # Dealer card =>
@@ -223,6 +219,7 @@ if first == second
         end
     end
 
+# Hard hand suggestion
 elsif
     first.to_i < 11 && second.to_i < 11
     hard_hand[dealer.to_i].each do |key, value|
@@ -233,9 +230,8 @@ elsif
         end
     end
 
-
+# Soft hand suggestion
 elsif
-    # Soft hand suggestion
     first == 11 || second == 11
     puts "You have an ace"
     soft_hand[dealer.to_i].each do |key, value|
@@ -246,6 +242,5 @@ elsif
         end
     end
 end
-
 
 puts "May the odds be ever in your favor."
