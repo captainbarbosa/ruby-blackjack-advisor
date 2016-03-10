@@ -39,15 +39,14 @@ end
 
 #-----------------
 
-first = first_card
-second = second_card
-dealer = dealer_card
+# Blackjack Strategy:
+#     H -- Hit
+#     S -- Stand
+#     P -- Split
+#    Dh -- Double if possible, otherwise hit
+#    Ds -- Double if possible, otherwise stand
 
-puts "First card: #{first}\nSecond card: #{second}\nDealer card: #{dealer}"
-cardset = first.to_i + second.to_i
-puts "Cardset: #{cardset}"
-
-hard = {
+hard_hand = {
     # Dealer card =>
     2 => {
         # Suggestion => Player's combined card values
@@ -102,7 +101,7 @@ hard = {
     }
 }
 
-soft = {
+soft_hand = {
     # Dealer card =>
     2 => {
         # Suggestion => Player's combined card values
@@ -153,8 +152,10 @@ soft = {
     }
 }
 
-pair = {
+pair_hand = {
+    # Dealer card =>
     2 => {
+        # Suggestion => Player's pairs
         "P" => [ [2,2], [3,3], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
         "H" => [ [4,4] ],
         "Dh" => [ [5,5] ],
@@ -206,7 +207,30 @@ pair = {
     },
     "A" => {
         "P" => [ [8,8], ["A","A"] ],
-        "H" => [ [2,2], [3,3], [4,4], [5,5], [6,6], [7,7] ]
+        "H" => [ [2,2], [3,3], [4,4], [5,5], [6,6], [7,7] ],
         "S" => [ [9,9], [10,10] ]
     }
 }
+
+#-----------------
+
+first = first_card
+second = second_card
+dealer = dealer_card
+
+puts "First card: #{first}\nSecond card: #{second}\nDealer card: #{dealer}"
+cardset = first.to_i + second.to_i
+puts "Cardset: #{cardset}"
+
+if first == second
+    pair = []
+    pair.push(first.to_i, second.to_i) # >> only accepts one value
+
+    pair_hand[first.to_i].each do |key, value|
+        value.each do |thing|
+             if pair == thing
+                 puts "You have a pair! Suggestion: #{key}"
+             end
+        end
+    end
+end
