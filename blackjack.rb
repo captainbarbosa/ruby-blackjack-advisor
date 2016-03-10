@@ -6,6 +6,9 @@ def first_card
     if input == "J" || input == "K" || input == "Q"
         input = 10
         return input
+    elsif input == "A"
+        input = 11
+        return input
     else
         return input
     end
@@ -19,6 +22,9 @@ def second_card
     if input == "J" || input == "K" || input == "Q"
         input = 10
         return input
+    elsif input == "A"
+        input = 11
+        return input
     else
         return input
     end
@@ -31,6 +37,9 @@ def dealer_card
 
     if input == "J" || input == "K" || input == "Q"
         input = 10
+        return input
+    elsif input == "A"
+        input = 11
         return input
     else
         return input
@@ -50,105 +59,105 @@ hard_hand = {
     # Dealer card =>
     2 => {
         # Suggestion => Player's combined card values
-        "H" => [5, 6, 7, 8, 12],
-        "Dh"=> [9, 10, 11],
-        "S" => [13, 14, 15, 16, 17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 12],
+        "Double if possible, otherwise hit"=> [9, 10, 11],
+        "Stand" => [13, 14, 15, 16, 17, 18, 19, 20, 21]
     },
     3 => {
-        "H" => [5, 6, 7, 8, 12],
-        "Dh"=> [9, 10, 11],
-        "S" => [13, 14, 15, 16, 17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 12],
+        "Double if possible, otherwise hit"=> [9, 10, 11],
+        "Stand" => [13, 14, 15, 16, 17, 18, 19, 20, 21]
     },
     4 => {
-        "H" => [5, 6, 7, 8],
-        "Dh"=> [9, 10, 11],
-        "S" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8],
+        "Double if possible, otherwise hit"=> [9, 10, 11],
+        "Stand" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
     },
     5 => {
-        "H" => [5, 6, 7],
-        "Dh" => [8, 9, 10, 11],
-        "S" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+        "Hit" => [5, 6, 7],
+        "Double if possible, otherwise hit" => [8, 9, 10, 11],
+        "Stand" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
     },
     6 => {
-        "H" => [5, 6, 7],
-        "Dh" => [8, 9, 10, 11],
-        "S" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7],
+        "Double if possible, otherwise hit" => [8, 9, 10, 11],
+        "Stand" => [12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
     },
     7 => {
-        "H" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
-        "Dh"=> [10, 11],
-        "S" => [17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [10, 11],
+        "Stand" => [17, 18, 19, 20, 21]
     },
     8 => {
-        "H" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
-        "Dh"=> [10, 11],
-        "S" => [17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [10, 11],
+        "Stand" => [17, 18, 19, 20, 21]
     },
     9 => {
-        "H" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
-        "Dh"=> [10, 11],
-        "S" => [17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 9, 12, 13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [10, 11],
+        "Stand" => [17, 18, 19, 20, 21]
     },
     10 => {
-        "H" => [5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16],
-        "Dh"=> [11],
-        "S" => [17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [11],
+        "Stand" => [17, 18, 19, 20, 21]
     },
     "A" => {
-        "H" => [5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16],
-        "Dh"=> [11],
-        "S" => [17, 18, 19, 20, 21]
+        "Hit" => [5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [11],
+        "Stand" => [17, 18, 19, 20, 21]
     }
 }
 
-soft_hand = {
+soft_hand = { # if hand contains an ace
     # Dealer card =>
     2 => {
         # Suggestion => Player's combined card values
-        "H" => [13, 14, 15, 16],
-        "Dh"=> [17],
-        "S" => [18, 19, 20, 21]
+        "Hit" => [13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [17],
+        "Stand" => [18, 19, 20, 21]
     },
     3 => {
-        "H" => [13, 14, 15, 16],
-        "Dh"=> [17],
-        "Ds" => [18],
-        "S" => [19, 20, 21]
+        "Hit" => [13, 14, 15, 16],
+        "Double if possible, otherwise hit"=> [17],
+        "Double if possible, otherwise stand" => [18],
+        "Stand" => [19, 20, 21]
     },
     4 => {
-        "Dh"=> [13, 14, 15, 16, 17],
-        "Ds" => [18],
-        "S" => [19, 20, 21]
+        "Double if possible, otherwise hit"=> [13, 14, 15, 16, 17],
+        "Double if possible, otherwise stand" => [18],
+        "Stand" => [19, 20, 21]
     },
     5 => {
-        "Dh"=> [13, 14, 15, 16, 17],
-        "Ds" => [18],
-        "S" => [19, 20, 21]
+        "Double if possible, otherwise hit"=> [13, 14, 15, 16, 17],
+        "Double if possible, otherwise stand" => [18],
+        "Stand" => [19, 20, 21]
     },
     6 => {
-        "Dh"=> [13, 14, 15, 16, 17],
-        "Ds" => [18, 19],
-        "S" => [20, 21]
+        "Double if possible, otherwise hit"=> [13, 14, 15, 16, 17],
+        "Double if possible, otherwise stand" => [18, 19],
+        "Stand" => [20, 21]
     },
     7 => {
-        "H" => [13, 14, 15, 16, 17],
-        "S" => [18, 19, 20, 21]
+        "Hit" => [13, 14, 15, 16, 17],
+        "Stand" => [18, 19, 20, 21]
     },
     8 => {
-        "H" => [13, 14, 15, 16, 17],
-        "S" => [18, 19, 20, 21]
+        "Hit" => [13, 14, 15, 16, 17],
+        "Stand" => [18, 19, 20, 21]
     },
     9 => {
-        "H" => [13, 14, 15, 16, 17, 18],
-        "S" => [19, 20, 21]
+        "Hit" => [13, 14, 15, 16, 17, 18],
+        "Stand" => [19, 20, 21]
     },
     10 => {
-        "H" => [13, 14, 15, 16, 17, 18],
-        "S" => [19, 20, 21]
+        "Hit" => [13, 14, 15, 16, 17, 18],
+        "Stand" => [19, 20, 21]
     },
     "A" => {
-        "H" => [13, 14, 15, 16, 17],
-        "S" => [18, 19, 20, 21]
+        "Hit" => [13, 14, 15, 16, 17],
+        "Stand" => [18, 19, 20, 21]
     }
 }
 
@@ -156,59 +165,59 @@ pair_hand = {
     # Dealer card =>
     2 => {
         # Suggestion => Player's pairs
-        "P" => [ [2,2], [3,3], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
-        "H" => [ [4,4] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [2,2], [3,3], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Hit" => [ [4,4] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     3 => {
-        "P" => [ [2,2], [3,3], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
-        "H" => [ [4,4] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [2,2], [3,3], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Hit" => [ [4,4] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     4 => {
-        "P" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     5 => {
-        "P" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     6 => {
-        "P" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [2,2], [3,3], [4,4], [6,6], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     7 => {
-        "P" => [ [2,2], [3,3], [6,6], [7,7], [8,8], ["A","A"] ],
-        "H" => [ [4,4] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [9,9], [10,10] ]
+        "Split" => [ [2,2], [3,3], [6,6], [7,7], [8,8], ["A","A"] ],
+        "Hit" => [ [4,4] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [9,9], [10,10] ]
     },
     8 => {
-        "P" => [ [3,3], [7,7], [8,8], [9,9], ["A","A"] ],
-        "H" => [ [2,2], [4,4], [6,6] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10, 10] ]
+        "Split" => [ [3,3], [7,7], [8,8], [9,9], ["A","A"] ],
+        "Hit" => [ [2,2], [4,4], [6,6] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10, 10] ]
     },
     9 => {
-        "P" => [ [8,8], [9,9], ["A","A"] ],
-        "H" => [ [2,2], [3,3], [4,4], [6,6], [7,7] ],
-        "Dh" => [ [5,5] ],
-        "S" => [ [10,10] ]
+        "Split" => [ [8,8], [9,9], ["A","A"] ],
+        "Hit" => [ [2,2], [3,3], [4,4], [6,6], [7,7] ],
+        "Double if possible, otherwise hit" => [ [5,5] ],
+        "Stand" => [ [10,10] ]
     },
     10 => {
-        "P" => [ [8,8], ["A","A"] ],
-        "H" => [ [2,2], [3,3], [4,4], [5,5], [6,6] ],
-        "S" => [ [7,7], [9,9], [10,10] ]
+        "Split" => [ [8,8], ["A","A"] ],
+        "Hit" => [ [2,2], [3,3], [4,4], [5,5], [6,6] ],
+        "Stand" => [ [7,7], [9,9], [10,10] ]
     },
     "A" => {
-        "P" => [ [8,8], ["A","A"] ],
-        "H" => [ [2,2], [3,3], [4,4], [5,5], [6,6], [7,7] ],
-        "S" => [ [9,9], [10,10] ]
+        "Split" => [ [8,8], ["A","A"] ],
+        "Hit" => [ [2,2], [3,3], [4,4], [5,5], [6,6], [7,7] ],
+        "Stand" => [ [9,9], [10,10] ]
     }
 }
 
@@ -222,15 +231,42 @@ puts "First card: #{first}\nSecond card: #{second}\nDealer card: #{dealer}"
 cardset = first.to_i + second.to_i
 puts "Cardset: #{cardset}"
 
+# Pair hand suggestion
 if first == second
     pair = []
     pair.push(first.to_i, second.to_i) # >> only accepts one value
 
-    pair_hand[first.to_i].each do |key, value|
+    pair_hand[dealer_card].each do |key, value|
         value.each do |thing|
              if pair == thing
                  puts "You have a pair! Suggestion: #{key}"
              end
         end
     end
+
+elsif
+    first.to_i < 11 && second.to_i < 11
+    hard_hand[dealer.to_i].each do |key, value|
+        value.each do |thing|
+            if cardset == thing
+                puts "Suggestion for strong hand: #{key}"
+            end
+        end
+    end
+
+
+elsif
+    # Soft hand suggestion
+    first == 11 || second == 11
+    puts "You have an ace"
+    soft_hand[dealer.to_i].each do |key, value|
+        value.each do |thing|
+            if cardset == thing
+                puts "Suggestion for soft hand: #{key}"
+            end
+        end
+    end
 end
+
+
+puts "Good luck!"
