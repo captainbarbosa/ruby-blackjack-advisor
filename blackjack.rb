@@ -1,5 +1,6 @@
-def first_card
-    puts "Enter your first card:"
+#TODO: Fix case where user has a pair of aces
+
+def get_card
 
     input = gets.upcase.chomp
 
@@ -9,42 +10,15 @@ def first_card
     elsif input == "A"
         input = 11
         return input
-    else
+    elsif
+        input.to_i > 1 && input.to_i < 10
         return input
+    else
+        puts "Please enter a valid card"
+        input = get_card
     end
 end
 
-def second_card
-    puts "Enter your second card:"
-
-    input = gets.upcase.chomp
-
-    if input == "J" || input == "K" || input == "Q"
-        input = 10
-        return input
-    elsif input == "A"
-        input = 11
-        return input
-    else
-        return input
-    end
-end
-
-def dealer_card
-    puts "Enter the dealer's card:"
-
-    input = gets.upcase.chomp
-
-    if input == "J" || input == "K" || input == "Q"
-        input = 10
-        return input
-    elsif input == "A"
-        input = 11
-        return input
-    else
-        return input
-    end
-end
 
 #-----------------
 
@@ -223,9 +197,14 @@ pair_hand = {
 
 #-----------------
 
-first = first_card
-second = second_card
-dealer = dealer_card
+puts "Enter your first card:"
+first = get_card
+
+puts "Enter your second card:"
+second = get_card
+
+puts "Enter your dealer card:"
+dealer = get_card
 
 puts "First card: #{first}\nSecond card: #{second}\nDealer card: #{dealer}"
 cardset = first.to_i + second.to_i
@@ -236,7 +215,7 @@ if first == second
     pair = []
     pair.push(first.to_i, second.to_i) # >> only accepts one value
 
-    pair_hand[dealer_card].each do |key, value|
+    pair_hand[dealer.to_i].each do |key, value|
         value.each do |thing|
              if pair == thing
                  puts "You have a pair! Suggestion: #{key}"
@@ -269,4 +248,4 @@ elsif
 end
 
 
-puts "Good luck!"
+puts "May the odds be ever in your favor."
