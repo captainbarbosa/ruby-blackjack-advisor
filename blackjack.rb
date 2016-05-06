@@ -16,6 +16,7 @@ def get_card
         return input
     else
         puts "Please enter a valid card:"
+        # RECURSION!
         input = get_card
     end
 end
